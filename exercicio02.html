@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+
+<body>
+    Destino de viagem: <input type="text" id="input_destino">
+    <button onclick="adicionar()">Adicionar</button> <br><br>
+    <button onclick="primeira()">Primeira viagem</button> <br><br>
+    <button onclick="terceira()">Terceira viagem</button> <br><br>
+    <button onclick="ultima()">Última viagem</button> <br><br>
+    <div id="div_viagem"></div>
+</body>
+
+</html>
+<script>
+    var listaDestino = [];
+    function adicionar() {
+        var destino = input_destino.value;
+        var adicionar = listaDestino.push(`${destino}`);
+        // listaDestino.push(destino);
+    }
+    function primeira() {
+        var destino = input_destino.value;
+        
+        if (listaDestino[0] && listaDestino[0] != '') {
+            div_viagem.innerHTML = listaDestino[0]
+        } else {
+            div_viagem.innerHTML = `ainda não viajou`
+        }
+    }
+    function terceira() {
+        var desrtino = input_destino.value;
+        if (listaDestino[2] && listaDestino[2] != '') {
+            div_viagem.innerHTML = listaDestino[2]
+        } else {
+            div_viagem.innerHTML = `ainda não fez a terceira viagem`
+        }
+    }
+    function ultima() {
+        var destino = input_destino.value;
+        if (listaDestino[listaDestino.length - 1]) {
+            div_viagem.innerHTML = listaDestino[listaDestino.length - 1]
+        } else {
+            div_viagem.innerHTML = `ainda não viajou`
+        }
+    }
+</script>
+

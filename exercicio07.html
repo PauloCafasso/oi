@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+</head>
+
+<body>
+    Insira filmes que mais gosta: <input type="text" id="input_filme">
+    <button onclick="filme()">
+        Cadastrar
+    </button>
+    <div id="div_filme">
+        <p style="color: red;"></p>
+    </div>
+
+</body>
+
+</html>
+<script>
+    var listaFavoritos = [];
+    var contaFilme = 0
+    function filme() {
+        var filme = input_filme.value;
+        listaFavoritos.push(filme);
+        for (; contaFilme < listaFavoritos.length; contaFilme++) {
+            if (contaFilme % 2 == 0) {
+                div_filme.innerHTML += `<p style="color: blue;">${filme}</p> `
+            } else {
+                div_filme.innerHTML += `<p style="color: red;">${filme}</p> `
+            }
+        }
+    }
+
+</script>

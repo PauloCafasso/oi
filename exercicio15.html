@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15</title>
+</head>
+
+<body>
+    insira o nome do produto: <input type="text" id="input_nome_produto">
+    insira o preço do produto: <input type="number" id="input_valor_produto">
+    <button onclick="cadastrar()">
+        Cadastrar
+    </button>
+    <button onclick="relatorio()">
+        Relatório de Estoque
+    </button>
+    <div id="div_relatorio"></div>
+</body>
+
+</html>
+<script>
+    var listaNome = [];
+    var listaValor = [];
+    var valorTotal = 0;
+    var totalVenda = 0;
+    function cadastrar() {
+        listaNome.push(input_nome_produto.value);
+        listaValor.push(input_valor_produto.value);
+        valorTotal += Number(input_valor_produto.value);
+    }
+    function relatorio() {
+        var comparaCaro = 0;
+        var comparaBarato = 100;
+        div_relatorio.innerHTML = "";
+        for (var posicao = 0; posicao < listaNome.length; posicao++) {
+
+            var valorVenda = listaValor[posicao] * 1.25;
+            totalVenda += valorVenda;
+            valorTotal += listaValor[posicao];
+
+            if (listaValor[posicao] > comparaCaro) {
+                comparaCaro = listaValor[posicao];
+                var maisCaro = listaNome[posicao];
+            }
+            if (listaValor[posicao] < comparaBarato) {
+                comparaBarato = listaValor[posicao];
+                var maisBarato = listaNome[posicao];
+            }
+
+            div_relatorio.innerHTML += `<br> Produto ${posicao + 1}: ${listaNome[posicao]} <br> Preço de compra R$${listaValor[posicao]} <br> Vender por: R$${valorVenda} `;
+        }
+
+        var mediaVenda = totalVenda/listaValor.length
+
+        div_relatorio.innerHTML += `<br> Nome do produto mais caro: ${maisCaro}
+                                    <br> Nome do produto mais barato: ${maisBarato}
+                                    <br> Soma dos valores de compra: R$${valorTotal}
+                                    <br> Média dos valores de venda: R$${mediaVenda}`
+    }
+</script>

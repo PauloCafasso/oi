@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10Desafio</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Linha de Onibus" id="input_linha"> 
+    <button onclick="gravar()">Gravar Buzão</button>
+
+    <input type="text" placeholder="Linha pesquisada" id="input_pesquisa"> 
+    <button onclick="pesquisar()">Pesquisar</button> <br><br>
+
+    <div id="div_plotagem"></div>
+    <div id="div_pesquisa"></div>
+</body>
+
+</html>
+<script>
+    var listaBuzao = [];
+    function gravar() {
+        div_plotagem.innerHTML = "";
+        listaBuzao.unshift(input_linha.value);
+        for (var contador = 0; contador < listaBuzao.length; contador++) {
+            div_plotagem.innerHTML += `<br> ${listaBuzao[contador]}`
+        }
+    }
+    function pesquisar() {
+        div_pesquisa.innerHTML = "";
+        var linhasRepetidas = [];
+        var linhaPesquisada = input_pesquisa.value;
+        for(var posicao = 0 ; posicao < listaBuzao.length ; posicao++){
+            if(listaBuzao[posicao] == linhaPesquisada ){
+                linhasRepetidas.push(posicao + 1);
+            }
+        }
+        if(linhasRepetidas.length == 0){
+            div_pesquisa.innerHTML = `Você nunca pegou essa linha.`
+        }else{
+            div_pesquisa.innerHTML = ` Você já pegou essa linha ${linhasRepetidas.length} vezes, nessa ordem: ${linhasRepetidas} `
+        }
+    }
+</script>

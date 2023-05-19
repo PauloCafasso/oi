@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+</head>
+
+<body>
+    insira bairro: <input type="text" id="input_bairro">
+    <button onclick="cadastrar()">Cadastrar bairro</button> <br><br>
+    ordem do bairro: <input type="number" id="input_numero">
+    <button onclick="plotarMoradia()">Relembrar moradia</button>
+    <div id="div_moradia"></div>
+</body>
+
+</html>
+<script>
+    var listaBairro = [];
+    function cadastrar() {
+        var bairro = input_bairro.value;
+        listaBairro.push(bairro);
+    }
+    function plotarMoradia() {
+        var num = Number(input_numero.value);
+        if (listaBairro.length < num) {
+            div_moradia.innerHTML = `Você ainda não morou num ${num}º bairro`
+        } else {
+            div_moradia.innerHTML = listaBairro[num - 1]
+        }
+    }
+</script>

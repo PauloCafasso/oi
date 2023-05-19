@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14</title>
+</head>
+<body>
+    insira o nome do produto: <input type="text" id="input_nome_produto"> insira o preço do produto: <input type="number" id="input_valor_produto"> 
+    <button onclick="cadastrar()">
+        Cadastrar
+    </button> 
+    <button onclick="relatorio()">
+        Relatório de Estoque
+    </button>
+    <div id="div_relatorio"></div>
+</body>
+</html>
+<script>
+    var listaNome = [];
+    var listaValor = [];
+    function cadastrar(){
+        listaNome.push(input_nome_produto.value);
+        listaValor.push(input_valor_produto.value);
+    }
+    function relatorio(){
+        div_relatorio.innerHTML = "";
+        for(var posicao=0 ; posicao < listaNome.length ; posicao++){
+            var valorVenda = listaValor[posicao] * 1.25;
+            div_relatorio.innerHTML += `<br> Produto ${posicao+1}: ${listaNome[posicao]} <br> Preço de compra R$${listaValor[posicao]} Vender por: R$${valorVenda}`; 
+        }
+        
+    }
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13</title>
+</head>
+
+<body>
+    <select name="idique resultado" id="select_resultado">
+        <option value="vitoria">Vitoria</option>
+        <option value="empate">Empate</option>
+        <option value="derrota">Derrota</option>
+    </select>
+    <button onclick="registrar()">Registrar Jogo</button>
+    Indique qual jogo que saber resultado: <input type="text" id="input_pesquisa_jogo" oninput="pesquisarJogo()">
+    <br>
+    <div id="plotagem"></div>
+</body>
+
+</html>
+<script>
+    var resultados = [];
+    var vitorias = 0;
+    var empates = 0;
+    var derrotas = 0;
+
+
+    function registrar() {
+
+        var ultimoResultado = select_resultado.value;
+        resultados.push(ultimoResultado);
+
+        for (var posicao = 0; posicao < resultados.length; posicao++) {
+            if (ultimoResultado == "vitoria") {
+                vitorias++;
+            } else if (ultimoResultado == "empate") {
+                empates++;
+            } else {
+                derrotas++;
+            }
+        }
+        var pontosTotal = (vitorias * 3) + empates;
+        var aproveitamento = (pontosTotal / (resultados.length * 3)) * 100;
+        plotagem.innerHTML = ` O time teve: ${vitorias} vitórias, ${empates} empates, ${derrotas} derrotas <br> Pontuação total: ${pontosTotal} pontos <br> Aproveitamento: ${aproveitamento}% `
+    }
+    function pesquisarJogo() {
+
+    }
+</script>

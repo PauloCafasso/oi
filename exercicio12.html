@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+</head>
+
+<body>
+    Insira nome de um filho: <input type="text" id="input_nome" placeholder="nome">
+    <button onclick="cadastrar() ">
+        Cadastrar
+    </button>
+    <button onclick="atualizar()">
+        Atualizar Familia
+    </button>
+    <div id="div_familia"></div>
+</body>
+
+</html>
+<script>
+    var familia = [];
+    function cadastrar() {
+        var nome = input_nome.value;
+
+        if (familia.indexOf(nome) >= 0) {
+            alert(`Não pode mais de 1 filho com o mesmo nome!`)
+        } else {
+            familia.push(nome);
+        }
+    }
+    function atualizar() {
+        var qtdFilhos = familia.length;
+        div_familia.innerHTML = `  Seu custo mensal será aproximadamente R$${qtdFilhos * 3000} se colocar eles em escola particular ou R$${qtdFilhos * 1500} se eles estudarem em escola pública `
+    }
+</script>
+
+<!-- 
+.toFixed() adiciona ou manipula casas decimais (devolve EM FORMA DE TEXTO)
+ex: valorX.toFixed(2); manipula ou cria 2 casas decimais
+caso coloque dentro do Number() ele devolve o valor em numero (caso o valor tenha casas .00 ele vai corta-las)
+ -->
